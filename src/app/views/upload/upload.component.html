@@ -1,0 +1,11 @@
+<input type="file" accept="image/*" class="d-none" multiple (change)="onFileChange($event)" />
+<div class="container my-auto d-flex justify-content-center align-items-center vh-100">
+  <div
+    #dropContainer
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    class="w-75 h-75 border border-2 text-center align-content-center"
+  >
+    Drop the images here
+  </div>
+</div>
