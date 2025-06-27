@@ -5,13 +5,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PhotosService {
-  images = new BehaviorSubject<{ name: string; dataUrl: string }[]>([]);
+  images = new BehaviorSubject<
+    { name: string; dataUrl: string; index: number }[]
+  >([]);
 
   loadPhotos(files: FileList) {
+    this.images.next([]);
 
-    const newImages: { name: string; dataUrl: string }[] = [];
+    const newImages: { name: string; dataUrl: string; index: number }[] = [];
 
-    Array.from(files).forEach((file) => {
+    Array.from(files).forEach((file, index) => {
       const reader = new FileReader();
       reader.onload = () => {
         let fileName: any = file.name
@@ -26,9 +29,10 @@ export class PhotosService {
         newImages.push({
           name: fileName,
           dataUrl: reader.result as string,
+          index: index + 1,
         });
 
-        this.images.next([...this.images.value, ...newImages])
+        this.images.next([...newImages]);
       };
       reader.readAsDataURL(file);
     });

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PhotosService } from '../../services/photos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload',
@@ -11,9 +12,15 @@ import { PhotosService } from '../../services/photos.service';
 export class UploadComponent implements OnInit {
   images: string[] = [];
 
-  constructor(private photoService: PhotosService) {}
+  constructor(private photoService: PhotosService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.photoService.images.subscribe((images) => {
+      if (images.length !== 0) {
+        this.router.navigate(['slide-show']);
+      }
+    });
+  }
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -25,9 +32,6 @@ export class UploadComponent implements OnInit {
     if (files) {
       this.photoService.loadPhotos(files);
     }
-
-    console.log( this.photoService.images.value);
-    
   }
 
   onFileChange(event: Event) {
