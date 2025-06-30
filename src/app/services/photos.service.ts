@@ -36,7 +36,9 @@ export class PhotosService {
       };
       reader.readAsDataURL(file);
     });
+    
   }
 
-  constructor() {}
+  constructor() {
+  }
 }

@@ -1,4 +1,4 @@
-<div class="container">
-    <app-photo *ngFor="let item of imgs" [base64]="item.dataUrl" [name]="item.name"></app-photo>
+<div class="d-flex position-relative">
+    <app-photo *ngFor="let item of imgs" [base64]="item.dataUrl" [name]="item.name" [index]="item.index"></app-photo>
 </div>
 

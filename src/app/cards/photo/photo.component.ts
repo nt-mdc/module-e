@@ -8,5 +8,6 @@ import { Component, Input, input } from '@angular/core';
 })
 export class PhotoComponent {
   @Input() name: string = "Default";
-  @Input() base64: string = "Default Base 64"
+  @Input() base64: string = "Default Base 64";
+  @Input() index: number = 1;
 }
