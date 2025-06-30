@@ -1,0 +1,9 @@
+.a {
+  * {
+    visibility: hidden;
+  }
+
+  .current {
+    visibility: visible;
+  }
+}

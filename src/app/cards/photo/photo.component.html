@@ -1,6 +1,5 @@
 <div class="slide">
-  <div class="photo-container">
-    <img [src]="base64" alt="{{ name }}" />
-    <p>{{ name }} {{index}}</p>
+  <div [attr.data-name]="name" class="photo-container">
+    <img [src]="base64" alt="{{ name }}"/>
   </div>
 </div>

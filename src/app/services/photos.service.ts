@@ -9,6 +9,8 @@ export class PhotosService {
     { name: string; dataUrl: string; index: number }[]
   >([]);
 
+  theme = new BehaviorSubject<string>('c');
+
   loadPhotos(files: FileList) {
     this.images.next([]);
 
@@ -29,14 +31,14 @@ export class PhotosService {
         newImages.push({
           name: fileName,
           dataUrl: reader.result as string,
-          index: index + 1,
+          index: index,
         });
 
         this.images.next([...newImages]);
       };
       reader.readAsDataURL(file);
     });
-    
+
   }
 
   constructor() {

@@ -1,0 +1,22 @@
+.c {
+  position: relative;
+  height: 100vh;
+
+  * {
+    transition: all .5s linear;
+    position: absolute;
+    display: block;
+  }
+
+  .next {
+    transform: translateY(100%);
+  }
+
+  .current {
+    transform: translateY(0);
+  }
+
+  .past {
+    transform: translateY(-100%);
+  }
+}
